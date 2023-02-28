@@ -4,13 +4,17 @@
   "description": "Backend service for gift recommendation website",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "SET ACTIVE_ENV=DEVELOPMENT node index.js"
   },
   "author": "Your Name",
   "license": "MIT",
   "dependencies": {
+    "awilix": "^8.0.0",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
-    "mysql": "^2.18.1"
+    "fs": "^0.0.1-security",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.1.2",
+    "path": "^0.12.7"
   }
 }

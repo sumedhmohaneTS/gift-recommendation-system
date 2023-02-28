@@ -7,4 +7,8 @@ router.get('/health', (req, res) => {
     return res.send('Hello World! From external router JS');
 });
 
+router.get('/products', (req, res, next) => {
+    req.container.resolve('externalApiHandler').getProducts(req, res, next).catch(next)
+})
+
 module.exports = router
