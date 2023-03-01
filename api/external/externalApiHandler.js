@@ -1,4 +1,4 @@
-const BaseAPI = require("../BaseApi");
+const BaseAPI = require("../baseApi");
 
 class ExternalApiHandler extends BaseAPI {
     constructor(productService, featuredProductService) {

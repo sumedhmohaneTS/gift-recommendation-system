@@ -3,7 +3,7 @@ const connection = {
     host: process.env.MYSQL_HOST || 'localhost',
     user: process.env.MYSQL_USER || 'root',
     password: process.env.MYSQL_PASSWORD || 'boxmarker',
-    database: process.env.MYSQL_DATABASE || 'gift_recommendation_db',
+    database: 'gift_recommendation_db',
 };
 
 const mysqlPool = mysql.createPool(connection);
