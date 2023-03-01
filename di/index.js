@@ -2,7 +2,7 @@ const envConfig = require('../config/config');
 const middlewares = require('../driver')
 const fs = require('fs');
 const path = require('path');
-
+const http = require('request-promise');
 
 const { createContainer, InjectionMode, asValue, asClass, Lifetime } = require('awilix');
 const { env } = require('process');
@@ -17,6 +17,7 @@ container.register(
     {
         mysql: asValue(middlewares.mysql),
         envConfig: asValue(envConfig),
+        http: asValue(http)
     }
 );
 

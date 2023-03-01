@@ -1,3 +1,9 @@
 module.exports = {
-    activeEnv: 'DEVELOPMENT'
+    activeEnv: 'DEVELOPMENT',
+    services: {
+        recommendationService: {
+            endpoint: 'http://35.154.123.102',
+            createProductMetadataPath: '/product-metadata'
+        }
+    }
 };
