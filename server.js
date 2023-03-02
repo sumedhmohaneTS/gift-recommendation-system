@@ -16,7 +16,7 @@ module.exports = (container) => {
     });
 
     // Define routes here...
-    app.get('/health', (req, res) => {
+    app.get('/api/health', (req, res) => {
         return res.send('Hello World!');
     });
 
@@ -26,21 +26,4 @@ module.exports = (container) => {
         console.log(`Server running on port ${port}`);
     });
 
-    // const connection = mysql.createConnection({
-    //     host: 'localhost',
-    //     user: 'root',
-    //     password: 'password',
-    //     database: 'gift_recommendation_db'
-    // });
-
-    // connection.connect((err) => {
-    //     if (err) {
-    //         console.error('Error connecting to MySQL:', err);
-    //         return;
-    //     }
-    //     console.log('Successfully connected to MySQL database');
-
-    // });
-
-}
-    ;
+};

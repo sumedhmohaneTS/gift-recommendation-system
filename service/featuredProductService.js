@@ -8,6 +8,10 @@ class FeaturedProductService {
         return await this.repo.getFeaturedProducts();
     }
 
+    async addFeaturedProducts(params) {
+        return await this.repo.addFeaturedProducts(params);
+    }
+
 }
 
 module.exports = FeaturedProductService;

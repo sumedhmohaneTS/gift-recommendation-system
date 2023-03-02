@@ -18,10 +18,6 @@ router.use('/external', (req, res, next) => {
     externalRouter
 );
 
-router.get('/health', (req, res) => {
-    return res.send('Hello World! From router JS');
-});
-
 // // Get gift recommendations for a specific user
 // router.get('/users/:userId/gifts', (req, res) => {
 //     const userId = req.params.userId;

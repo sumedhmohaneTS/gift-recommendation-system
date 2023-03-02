@@ -1,14 +1,17 @@
 class ProductService {
 
-    constructor(productRepo, categoryService, recommendationService) {
+    constructor(productRepo, categoryService, recommendationService, featuredProductService) {
         this.repo = productRepo;
         this.categoryService = categoryService;
         this.recommendationService = recommendationService;
+        this.featuredProductService = featuredProductService;
     }
 
     async addProducts(data) {
         console.log(data);
-        const { id, name, description, url, price, category, image_url, age, gender, interest, occasions, relationships } = data;
+        const { id, name, description, url, price,
+            category, image_url, age, gender, interest,
+            occasions, relationships, featured } = data;
 
         const categoryData = await this.categoryService.getCategoryByName(category);
         const { id: categoryId } = categoryData;
@@ -19,6 +22,10 @@ class ProductService {
         }
         const productId = await this.repo.addProducts({ name, description, url, price, categoryId, image_url });
         await this.recommendationService.createProductMetadata({ product_id: productId, age, gender, interest, occasions, relationships });
+
+        if (featured) {
+            await this.featuredProductService.addFeaturedProducts({ productId });
+        }
     }
 
     async getProducts() {
