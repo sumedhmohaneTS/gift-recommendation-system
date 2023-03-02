@@ -8,7 +8,7 @@ class FeaturedProductRepo extends BaseRepo {
 
     async getFeaturedProducts() {
         const queryObj = {
-            sql: `SELECT p.* FROM featured_product fp LEFT JOIN PRODUCT p on fp.product_id=p.id  order by seqNo`,
+            sql: `SELECT p.* FROM featured_product fp LEFT JOIN product p on fp.product_id=p.id  order by seqNo`,
             params: {}
         };
         return await this.execute(queryObj);
