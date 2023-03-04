@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const mysql = require('mysql');
+const cors = require('cors');
 const router = require('./api/router')
 
 module.exports = (container) => {
