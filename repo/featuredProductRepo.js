@@ -4,11 +4,12 @@ class FeaturedProductRepo extends BaseRepo {
 
     constructor(mysql) {
         super(mysql);
+        this.tableName = 'featured_product';
     }
 
     async getFeaturedProducts() {
         const queryObj = {
-            sql: `SELECT p.* FROM featured_product fp LEFT JOIN product p on fp.product_id=p.id  order by seqNo`,
+            sql: `SELECT p.* FROM ${this.tableName} fp LEFT JOIN product p on fp.product_id=p.id  order by seqNo`,
             params: {}
         };
         return await this.execute(queryObj);
@@ -17,7 +18,7 @@ class FeaturedProductRepo extends BaseRepo {
     async addFeaturedProducts(params) {
         const { productId } = params;
         const queryObj = {
-            sql: `INSERT INTO featured_product(product_id, seqNo) values (?,?)`,
+            sql: `INSERT INTO ${this.tableName}(product_id, seqNo) values (?,?)`,
             params: [productId, 1]
 
         };

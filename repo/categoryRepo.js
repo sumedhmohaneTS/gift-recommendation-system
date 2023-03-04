@@ -4,11 +4,13 @@ class CategoryRepo extends BaseRepo {
 
     constructor(mysql) {
         super(mysql);
+
+        this.tableName = 'category';
     }
 
     async createCategory(name) {
         const queryObj = {
-            sql: `INSERT INTO Category(name) values (?)`,
+            sql: `INSERT INTO ${this.tableName}(name) values (?)`,
             params: [name]
 
         };
@@ -18,7 +20,7 @@ class CategoryRepo extends BaseRepo {
 
     async getCategoryByName(name) {
         const queryObj = {
-            sql: `SELECT * FROM Category where ? `,
+            sql: `SELECT * FROM ${this.tableName} where ? `,
             params: { name }
         };
         const result = await this.execute(queryObj);

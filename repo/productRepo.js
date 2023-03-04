@@ -4,12 +4,13 @@ class ProductRepo extends BaseRepo {
 
     constructor(mysql) {
         super(mysql);
+        this.tableName = 'product';
     }
 
     async addProducts(params) {
         const { name, description, url, price, categoryId, image_url } = params;
         const queryObj = {
-            sql: `INSERT INTO Product(name, description, url, price, category_id, image_url) values (?,?,?,?,?,?)`,
+            sql: `INSERT INTO ${this.tableName}(name, description, url, price, category_id, image_url) values (?,?,?,?,?,?)`,
             params: [name, description, url, price, categoryId, image_url]
 
         };
@@ -20,7 +21,7 @@ class ProductRepo extends BaseRepo {
     async updateProducts(params) {
         const { id, name, description, url, price, categoryId, image_url } = params;
         const queryObj = {
-            sql: `UPDATE Product
+            sql: `UPDATE ${this.tableName}
             SET ?
             WHERE id=?
             `,
@@ -31,7 +32,7 @@ class ProductRepo extends BaseRepo {
 
     async getProducts() {
         const queryObj = {
-            sql: `SELECT * FROM Product `,
+            sql: `SELECT * FROM ${this.tableName} `,
             params: {}
         };
         return await this.execute(queryObj);
@@ -39,7 +40,7 @@ class ProductRepo extends BaseRepo {
 
     async getProductById(id) {
         const queryObj = {
-            sql: `SELECT * FROM Product where ?`,
+            sql: `SELECT * FROM ${this.tableName} where ?`,
             params: { id }
         };
         return await this.execute(queryObj);
