@@ -7,7 +7,7 @@ class CategoryService {
 
     async getCategoryByName(name) {
         const data = await this.repo.getCategoryByName(name);
-        return data || await this.createCategory(name);
+        return data && data.id || await this.createCategory(name);
     }
 
     async createCategory(name) {
