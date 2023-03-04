@@ -9,11 +9,12 @@ class RecommendationService {
 
     async createProductMetadata(data) {
         const url = `${this.endPoint}${this.createProductMetadataPath}`;
+        Object.keys(data).forEach(key => data[key] === undefined && delete data[key]);
         try {
             const resp = await this.http.post({
                 url,
                 method: 'POST',
-                body: data,
+                body: JSON.stringify(data),
                 headers: {
                     'Content-type': 'application/json'
                 }

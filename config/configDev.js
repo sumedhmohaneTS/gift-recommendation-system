@@ -2,7 +2,7 @@ module.exports = {
     activeEnv: 'DEVELOPMENT',
     services: {
         recommendationService: {
-            endpoint: 'http://giftpickr.com/ml-api',
+            endpoint: 'http://127.0.0.1:5000/ml-api',
             createProductMetadataPath: '/product-metadata',
             getRecommendationPath: '/recommendation'
         }

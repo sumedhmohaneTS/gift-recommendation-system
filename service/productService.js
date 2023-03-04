@@ -10,7 +10,7 @@ class ProductService {
     async addProducts(data) {
         console.log(data);
         const { id, name, description, url, price,
-            category, image_url, age, gender, interest,
+            category, image_url, minAge, maxAge, gender, interests,
             occasions, relationships, featured } = data;
 
         const categoryData = await this.categoryService.getCategoryByName(category);
@@ -21,7 +21,7 @@ class ProductService {
             return;
         }
         const productId = await this.repo.addProducts({ name, description, url, price, categoryId, image_url });
-        await this.recommendationService.createProductMetadata({ product_id: productId, age, gender, interest, occasions, relationships });
+        await this.recommendationService.createProductMetadata({ product_id: productId, minAge, maxAge, gender, interests, occasions, relationships });
 
         if (featured) {
             await this.featuredProductService.addFeaturedProducts({ productId });
