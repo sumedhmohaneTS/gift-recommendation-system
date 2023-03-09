@@ -48,7 +48,7 @@ class ProductRepo extends BaseRepo {
 
     async getProductByIds(ids) {
         const queryObj = {
-            sql: `SELECT * FROM ${this.tableName} where id in ?`,
+            sql: `SELECT * FROM ${this.tableName} where id in (?)`,
             params: [ids]
         };
         return await this.execute(queryObj);

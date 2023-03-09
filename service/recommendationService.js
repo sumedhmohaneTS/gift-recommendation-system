@@ -37,7 +37,8 @@ class RecommendationService {
                     age, gender, occasion, relationship, interests
                 }
             });
-            return resp;
+            const data = JSON.parse(resp);
+            return data.data.productIds;
         } catch (error) {
             console.error(error);
             throw error;
