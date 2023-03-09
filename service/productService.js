@@ -38,7 +38,9 @@ class ProductService {
 
     async getRecommendedProducts(age, gender, occasion, relationship, interests) {
         const productIds = await this.recommendationService.getRecommendation(age, gender, occasion, relationship, interests);
-        return await this.getProductsByIds(productIds);
+        if (productIds.length > 0)
+            return await this.getProductsByIds(productIds);
+        return [];
     }
 
 }
