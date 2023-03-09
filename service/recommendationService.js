@@ -5,6 +5,7 @@ class RecommendationService {
         this.http = http;
         this.endPoint = envConfig.services.recommendationService.endpoint;
         this.createProductMetadataPath = envConfig.services.recommendationService.createProductMetadataPath;
+        this.getRecommendationPath = envConfig.services.recommendationService.getRecommendationPath;
     }
 
     async createProductMetadata(data) {
@@ -26,15 +27,14 @@ class RecommendationService {
         }
     }
 
-    async getRecommendation(data) {
+    async getRecommendation(age, gender, occasion, relationship, interests) {
         const url = `${this.endPoint}${this.getRecommendationPath}`;
         try {
-            const resp = await this.http.post({
+            const resp = await this.http.get({
                 url,
-                method: 'POST',
-                body: data,
-                headers: {
-                    'Content-type': 'application/json'
+                method: 'GET',
+                qs: {  // Query string like ?key=value&...
+                    age, gender, occasion, relationship, interests
                 }
             });
             return resp;

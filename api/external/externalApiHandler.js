@@ -15,6 +15,12 @@ class ExternalApiHandler extends BaseAPI {
         const data = await this.featuredProductService.getFeaturedProducts();
         return this.sendSuccess(res, data);
     }
+    async getRecommendedProducts(req, res) {
+        console.log(req);
+        const { age, gender, occasion, relationship, interests } = req.body;
+        const data = await this.productService.getRecommendedProducts(age, gender, occasion, relationship, interests);
+        return this.sendSuccess(res, data);
+    }
 }
 
 module.exports = ExternalApiHandler;

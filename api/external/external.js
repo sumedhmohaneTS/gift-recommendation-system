@@ -9,10 +9,13 @@ router.get('/health', (req, res) => {
 
 router.get('/products', (req, res, next) => {
     req.container.resolve('externalApiHandler').getProducts(req, res, next).catch(next)
-})
+});
 
 router.get('/products/featured', (req, res, next) => {
     req.container.resolve('externalApiHandler').getFeaturedProducts(req, res, next).catch(next)
-})
+});
 
+router.post('/products/recommendation', (req, res, next) => {
+    req.container.resolve('externalApiHandler').getRecommendedProducts(req, res, next).catch(next)
+});
 module.exports = router

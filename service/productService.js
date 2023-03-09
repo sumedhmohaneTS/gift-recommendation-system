@@ -32,6 +32,15 @@ class ProductService {
         return await this.repo.getProducts();
     }
 
+    async getProductsByIds(ids) {
+        return await this.repo.getProductByIds(ids);
+    }
+
+    async getRecommendedProducts(age, gender, occasion, relationship, interests) {
+        const productIds = await this.recommendationService.getRecommendation(age, gender, occasion, relationship, interests);
+        return await this.getProductsByIds(productIds);
+    }
+
 }
 
 module.exports = ProductService;
