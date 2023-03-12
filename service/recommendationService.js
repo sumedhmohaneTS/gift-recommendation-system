@@ -38,7 +38,7 @@ class RecommendationService {
                 }
             });
             const data = JSON.parse(resp);
-            return data.data.productIds;
+            return data.data;
         } catch (error) {
             console.error(error);
             throw error;

@@ -37,9 +37,14 @@ class ProductService {
     }
 
     async getRecommendedProducts(age, gender, occasion, relationship, interests) {
-        const productIds = await this.recommendationService.getRecommendation(age, gender, occasion, relationship, interests);
-        if (productIds.length > 0)
-            return await this.getProductsByIds(productIds);
+        const response = await this.recommendationService.getRecommendation(age, gender, occasion, relationship, interests);
+        const productIds = response.productIds
+        const productMetadata = response.products
+        if (productIds.length > 0) {
+            const allProducts = await this.getProductsByIds(productIds);
+            allProducts.forEach(product => product[metadata] = productMetadata[product.id])
+            return allProducts
+        }
         return [];
     }
 
