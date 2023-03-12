@@ -42,7 +42,7 @@ class ProductService {
         const productMetadata = response.products
         if (productIds.length > 0) {
             const allProducts = await this.getProductsByIds(productIds);
-            allProducts.forEach(product => product[metadata] = productMetadata[product.id])
+            allProducts.forEach(product => product['metadata'] = productMetadata[product.id])
             return allProducts
         }
         return [];
