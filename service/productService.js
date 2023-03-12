@@ -21,7 +21,7 @@ class ProductService {
             return;
         }
         const productId = await this.repo.addProducts({ name, description, url, price, categoryId, image_url });
-        await this.recommendationService.createProductMetadata({ product_id: productId, minAge, maxAge, gender, interests, occasions, relationships, rating, no_of_reviews });
+        await this.recommendationService.createProductMetadata({ product_id: productId, minAge, maxAge, gender, interests, occasions, relationships, rating, no_of_reviews, price });
 
         if (featured) {
             await this.featuredProductService.addFeaturedProducts({ productId });
