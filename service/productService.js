@@ -40,12 +40,21 @@ class ProductService {
         const response = await this.recommendationService.getRecommendation(age, gender, occasion, relationship, interests);
         const productIds = response.productIds
         const productMetadata = response.products
+        const data = {}
         if (productIds.length > 0) {
             const allProducts = await this.getProductsByIds(productIds);
             allProducts.forEach(product => product['metadata'] = productMetadata[product.id])
-            return allProducts
+            data.mainProducts = allProducts
         }
-        return [];
+
+        productIds = response.otherProductIds
+        productMetadata = response.otherProducts
+        if (productIds.length > 0) {
+            const allOtherProducts = await this.getProductsByIds(productIds);
+            allOtherProducts.forEach(product => product['metadata'] = productMetadata[product.id])
+            data.otherProducts = allOtherProducts
+        }
+        return data;
     }
 
 }
