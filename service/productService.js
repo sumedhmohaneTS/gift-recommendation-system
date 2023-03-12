@@ -36,8 +36,8 @@ class ProductService {
         return await this.repo.getProductByIds(ids);
     }
 
-    async getRecommendedProducts(age, gender, occasion, relationship, interests) {
-        const response = await this.recommendationService.getRecommendation(age, gender, occasion, relationship, interests);
+    async getRecommendedProducts(age, gender, occasion, relationship, interests, minPrice, maxPrice) {
+        const response = await this.recommendationService.getRecommendation(age, gender, occasion, relationship, interests, minPrice, maxPrice);
         let productIds = response.productIds
         let productMetadata = response.products
         const data = {}

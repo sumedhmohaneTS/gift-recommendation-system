@@ -27,14 +27,14 @@ class RecommendationService {
         }
     }
 
-    async getRecommendation(age, gender, occasion, relationship, interests) {
+    async getRecommendation(age, gender, occasion, relationship, interests, minPrice, maxPrice) {
         const url = `${this.endPoint}${this.getRecommendationPath}`;
         try {
             const resp = await this.http.get({
                 url,
                 method: 'GET',
                 qs: {  // Query string like ?key=value&...
-                    age, gender, occasion, relationship, interests
+                    age, gender, occasion, relationship, interests, minPrice, maxPrice
                 }
             });
             const data = JSON.parse(resp);
