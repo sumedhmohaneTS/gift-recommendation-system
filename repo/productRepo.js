@@ -48,7 +48,7 @@ class ProductRepo extends BaseRepo {
 
     async getProductByIds(ids) {
         const queryObj = {
-            sql: `SELECT c.name, p.* FROM ${this.tableName} p LEFT JOIN category c on p.category_id=c.id   where p.id in (?) ORDER BY FIELD(p.id, ?);`,
+            sql: `SELECT c.name as categoryName, p.* FROM ${this.tableName} p LEFT JOIN category c on p.category_id=c.id   where p.id in (?) ORDER BY FIELD(p.id, ?);`,
             params: [ids, ids]
         };
         return await this.execute(queryObj);
